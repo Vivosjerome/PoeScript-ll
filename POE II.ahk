@@ -21,7 +21,7 @@ lifeMaxOffset := 0x1C4
 
 lifeOffset := 0x1C8
 
-; CheckForUpdates()
+CheckForUpdates()
 
 Loop{
 

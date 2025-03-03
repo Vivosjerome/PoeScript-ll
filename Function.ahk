@@ -18,14 +18,14 @@ Update(){
     SetWorkingDir %A_ScriptDir% ;set to script directory to see files
 
     ; below is the URL name you would like to download. Filename is the name of the filename
-    url = https://github.com/Vivosjerome/PoeScript/archive/main.zip
+    url = https://github.com/Vivosjerome/PoeScript-ll/archive/main.zip
     Filename = Update.zip
 
     FileReadLine, VNum, %A_WorkingDir%\version.txt, 1 ;looks for local version text and stores as vnum
     if ErrorLevel = 1
         Vnum = 0
     whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
-    whr.Open("GET", "https://raw.githubusercontent.com/Vivosjerome/PoeScript/main/version.txt", true)
+    whr.Open("GET", "https://raw.githubusercontent.com/Vivosjerome/PoeScript-ll/main/version.txt", true)
     whr.Send()
     ; Using 'true' above and the call below allows the script to remain responsive.
     whr.WaitForResponse() ;this is taken from the installer. Can also be located as an example on the urldownloadtofile page of the quick reference guide.
@@ -43,7 +43,7 @@ Update(){
     ; Décompresse le fichier zip dans le dossier update
     RunWait, %ComSpec% /c powershell -Command "Expand-Archive -Path '%A_ScriptDir%\update.zip' -DestinationPath '%A_ScriptDir%\update'", , Hide
     ; Supprime l'ancien fichier YourScript.exe s'il existe
-    FileMove, %A_ScriptDir%\update\PoeScript-main\*, %A_ScriptDir%\, 1
+    FileMove, %A_ScriptDir%\update\PoeScript-ll-main\*, %A_ScriptDir%\, 1
     ; Supprime le fichier zip et le dossier update
     FileDelete, %A_ScriptDir%\update.zip
     FileRemoveDir, %A_ScriptDir%\update, 1
@@ -57,7 +57,7 @@ CheckForUpdates() {
     SetWorkingDir %A_ScriptDir%
 
     ; URL du fichier de version sur GitHub
-    versionURL := "https://raw.githubusercontent.com/Vivosjerome/PoeScript/main/version.txt"
+    versionURL := "https://raw.githubusercontent.com/Vivosjerome/PoeScript-ll/main/version.txt"
 
     ; Lit la version actuelle localement
     FileReadLine, localVersion, %A_WorkingDir%\version.txt, 1
@@ -79,7 +79,7 @@ CheckForUpdates() {
 
     if (onlineVersion > localVersion) {
         ; Une mise à jour est disponible
-        MsgBox, 1, Mise à jour, Une mise à jour est disponible. Voulez-vous mettre à jour maintenant?
+        MsgBox, 1, Mise a jour, Une mise a jour est disponible. Voulez-vous mettre a jour maintenant?
         IfMsgBox Ok
         Update()
     }
