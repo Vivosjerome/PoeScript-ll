@@ -7,7 +7,7 @@ Middle := Floor(MonitorWidth / 2) ; Divise par deux pour avoir le millieu
 pourcentage_seuil_vie := 40
 pourcentage_seuil_mana := 30
 
-staticAdress := 0x3CBAF78 
+staticAdress := 0x3CBDF88
 ; staticAdressReservation := 0x32E3A08
 
 staticOffsetAll := [0x0, 0x428, 0x10, 0x8, 0x40, 0x0]
