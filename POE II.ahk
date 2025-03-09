@@ -7,7 +7,7 @@ Middle := Floor(MonitorWidth / 2) ; Divise par deux pour avoir le millieu
 pourcentage_seuil_vie := 40
 pourcentage_seuil_mana := 30
 
-staticAdress := 0x3CBDF88
+staticAdress := 0x3CBDF78
 ; staticAdressReservation := 0x32E3A08
 
 staticOffsetAll := [0x0, 0x428, 0x10, 0x8, 0x40, 0x0]
@@ -75,10 +75,16 @@ XButton2::
     Suspend
     Pause ,,1
     if A_IsPaused {
-        ToolTip, PAUSED, %Middle%, 1,
+        ToolTip, PAUSED
+        ; Obtenez la largeur du texte du tooltip "PAUSED"
+        ToolTipWidth := StrLen("PAUSED") * 6 ; Approximation de la largeur du texte en pixels
+        ; Calculer la position pour centrer le tooltip
+        ToolTip, PAUSED, % Middle - ToolTipWidth / 2, 1
     } else {
-        ToolTip, RUNNING, %Middle%, 1,
-        SetTimer RemoveToolTip,
+        ToolTip, RUNNING
+        ToolTipWidth := StrLen("RUNNING") * 6 ; Approximation de la largeur du texte en pixels
+        ToolTip, RUNNING, % Middle - ToolTipWidth / 2, 1
+        SetTimer RemoveToolTip
     }
 return
 
